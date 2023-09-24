@@ -1,0 +1,20 @@
+{"data": [
+    {
+        "id": 1,
+        "attributes": {
+            "text": "c c++ con ramon",
+            "createdAt": "2023-09-24T10:40:46.134Z",
+            "updatedAt": "2023-09-24T10:40:47.498Z",
+            "publishedAt": "2023-09-24T10:40:47.496Z"
+        }
+    }
+],
+"meta": {
+    "pagination": {
+        "page": 1,
+        "pageSize": 25,
+        "pageCount": 1,
+        "total": 1
+    }
+}
+}
