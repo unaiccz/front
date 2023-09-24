@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div>
-      <h1 className='bg-dark mx-4 my-4 rounded-3 text-white p-4'>Hello class</h1>
+      <h1 className='bg-dark mx-4 my-4 rounded-3 text-white p-4'>Bloc de notas unai</h1>
       {data && (
         <div className='card mx-4 my-4 w-50 h'>
           {data.map((item) => (
