@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "progs",
+  "info": {
+    "singularName": "prog",
+    "pluralName": "progs",
+    "displayName": "prog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "apuntes": {
+      "type": "richtext"
+    }
+  }
+}

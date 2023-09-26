@@ -361,36 +361,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiApunteApunte extends Schema.CollectionType {
-  collectionName: 'apuntes';
-  info: {
-    singularName: 'apunte';
-    pluralName: 'apuntes';
-    displayName: 'apunte';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    text: Attribute.RichText;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::apunte.apunte',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::apunte.apunte',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -706,6 +676,86 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiApunteApunte extends Schema.CollectionType {
+  collectionName: 'apuntes';
+  info: {
+    singularName: 'apunte';
+    pluralName: 'apuntes';
+    displayName: 'apunte';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::apunte.apunte',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::apunte.apunte',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBbddBbdd extends Schema.CollectionType {
+  collectionName: 'bbdds';
+  info: {
+    singularName: 'bbdd';
+    pluralName: 'bbdds';
+    displayName: 'bbdd';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    apuntes: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 20;
+      }> &
+      Attribute.DefaultTo<'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::bbdd.bbdd', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::bbdd.bbdd', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProgProg extends Schema.CollectionType {
+  collectionName: 'progs';
+  info: {
+    singularName: 'prog';
+    pluralName: 'progs';
+    displayName: 'prog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    apuntes: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::prog.prog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::prog.prog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Shared {
     export interface ContentTypes {
@@ -716,13 +766,15 @@ declare module '@strapi/strapi' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::apunte.apunte': ApiApunteApunte;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::apunte.apunte': ApiApunteApunte;
+      'api::bbdd.bbdd': ApiBbddBbdd;
+      'api::prog.prog': ApiProgProg;
     }
   }
 }

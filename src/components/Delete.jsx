@@ -1,21 +1,16 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 
-function Delete({ id}) {
+function Delete({fn, id, delt}) {  
+  return (
+    <>
+    <div onClick={()=> fn(id)} className='mb-4 btn btn-danger'>Delete
     
-    const del = async (rel) => {
-        const res = await fetch(`http://localhost:1337/api/apuntes/${id}`, {
-            method: 'DELETE'
-        })
-        const json = await res.json()
-        console.log(json)
+    </div>
+    {
+      delt && <h3 className='alert'>Deleted</h3>
     }
-    return (
-        <>
-            <button className='btn btn-danger' onClick={() => del(id)}>
-                Delete
-            </button>
-        </>
-    )
+    </>
+  )
 }
 
-export default Delete
+export default Delete 
